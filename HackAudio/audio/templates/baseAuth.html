@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block nav %}
+<span class="navbar-text">
+      Вы вошли как {{ username }}
+    </span>
+<form style="margin-left: 15px;margin-right: 10px;" method="POST" action="/logout">
+    {% csrf_token %}
+    <input type="submit" value="Выйти" class="btn btn-outline-default my-2 my-sm-0">
+</form>
+{% endblock %}
+
+{% block card %}
+{% endblock %}

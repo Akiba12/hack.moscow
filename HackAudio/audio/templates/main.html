@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{%block nav%}
+<form style="margin-left: 15px;margin-right: 10px;" class="form-inline" method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="basic-addon1" name="username"/>
+        <input type="submit" name="button" value="Войти или Зарегестрироваться"
+               class="btn btn-outline-default my-2 my-sm-0" />
+    </div>
+</form>
+{% endblock %}
+{% block nav2 %}
+{% endblock %}
+
+{% block card %}
+{% endblock %}

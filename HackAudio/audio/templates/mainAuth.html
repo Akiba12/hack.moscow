@@ -1,0 +1,15 @@
+{% extends "baseAuth.html" %}
+
+{% block card %}
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    {% for message in messages %}
+    <li class="list-group-item">
+      <h6>{{ message.service }}</h6>
+      <p>{{ message.text }}</p>
+      <p>{{ message.date }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
