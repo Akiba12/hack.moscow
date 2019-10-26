@@ -229,4 +229,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/macos,python,pycharm,windows
-credentials.txt
+credentials/
