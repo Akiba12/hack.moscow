@@ -1,7 +1,16 @@
 {% extends "baseAuth.html" %}
 
 {% block card %}
-
-<p>*добавление телеграмма*</p>
-
+<p>
+<h3 align="center">Добавление телеграмма.</h3>
+<p>
+<p>Чтобы добавить интеграцию телеграмма <a href="https://my.telegram.org">нажмите сюда</a>, авторизируйтесь, создайте приложение и введите Hash и api.</p>
+<p>
+<form>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Введите номер телефона.</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="+79 ...">
+  </div>
+  <input type="submit" class="btn btn-primary mb-2" type="submit" value="Продолжить">
+</form>
 {% endblock %}

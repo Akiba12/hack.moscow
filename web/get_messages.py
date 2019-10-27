@@ -1,8 +1,8 @@
 from telethon import TelegramClient, events, sync, client
 
 # credentials
-api_id = int(open('../credentials/telegram_api_id.txt','r').read())
-api_hash = open('../credentials/telegram_api_hash.txt','r').read()
+api_id = 1112802
+api_hash = "8961da04758e6caaa8184dae5f9cc5da"
 client = TelegramClient('anon', api_id, api_hash)
 client.flood_sleep_threshold = 0
 
@@ -41,7 +41,7 @@ async def get_audio(event):
     if message.media is not None:
         await client.download_media(message=message)
 
-client.start()
+client.start(phone='+79251286565', password='tikhon20telegram')
 client.run_until_disconnected()
 
 with client:
