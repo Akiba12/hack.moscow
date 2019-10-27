@@ -5,9 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from audio.models import data, services
 import speechkit
-import get_messages
+# import get_messages
 import datetime
 
+files = ['50.opus']
 
 def main(request):
     if request.user.is_authenticated:
@@ -16,25 +17,30 @@ def main(request):
             return redirect ('/addservice?reason={}'.format("noservices"))
 
         else:
-            get_messages
-            newfile = get_messages.newfile()
-            if newfile != '':
-                d = datetime.date()+'.opus'
-                speechkit.recode(newfile, d)
+
+            # get_messages
+            # newfile = get_messages.newfile()
+            # if newfile != '':
+            '''
+            for newfile in files:
+                d = str(datetime.datetime.now())+'.opus'
+                #output, error = speechkit.recode(newfile, d)
+                #print(output, error)
                 token = "AgAAAAAsHJhgAATuwWbeLLogYEKyh_JmCHj_evs"
                 spchkt = speechkit.recognize(token)
                 folder_id = "b1geohkpjn64hcd0bb7g"
-                text = spchkt.recognize(d, folder_id)
+                text = spchkt.recognize(newfile, folder_id)
                 da = data()
                 da.user = request.user
                 da.service = 'telegram'
                 da.message_id = newfile
                 da.text = text
                 da.sender = 'NULL'
-                da.date = datetime.date()
+                da.date = str('2000-08-24')
                 da.save()
+            '''
 
-            messages = data.objects.get(user=request.user)
+            messages = data.objects.filter(user=request.user)
             return render(request, 'mainAuth.html', {'username': request.user, 'messages': messages})
 
 
