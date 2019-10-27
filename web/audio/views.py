@@ -8,7 +8,7 @@ import speechkit
 # import get_messages
 import datetime
 
-files = ['50.opus']
+files = ['60.opus']
 
 def main(request):
     if request.user.is_authenticated:
@@ -21,7 +21,7 @@ def main(request):
             # get_messages
             # newfile = get_messages.newfile()
             # if newfile != '':
-            '''
+
             for newfile in files:
                 d = str(datetime.datetime.now())+'.opus'
                 #output, error = speechkit.recode(newfile, d)
@@ -38,7 +38,7 @@ def main(request):
                 da.sender = 'NULL'
                 da.date = str('2000-08-24')
                 da.save()
-            '''
+
 
             messages = data.objects.filter(user=request.user)
             return render(request, 'mainAuth.html', {'username': request.user, 'messages': messages})
