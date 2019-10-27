@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from audio.models import data, services
 import speechkit
+import get_messages
+import datetime
 
 
 def main(request):
@@ -14,6 +16,24 @@ def main(request):
             return redirect ('/addservice?reason={}'.format("noservices"))
 
         else:
+            get_messages
+            newfile = get_messages.newfile()
+            if newfile != '':
+                d = datetime.date()+'.opus'
+                speechkit.recode(newfile, d)
+                token = "AgAAAAAsHJhgAATuwWbeLLogYEKyh_JmCHj_evs"
+                spchkt = speechkit.recognize(token)
+                folder_id = "b1geohkpjn64hcd0bb7g"
+                text = spchkt.recognize(d, folder_id)
+                da = data()
+                da.user = request.user
+                da.service = 'telegram'
+                da.message_id = newfile
+                da.text = text
+                da.sender = 'NULL'
+                da.date = datetime.date()
+                da.save()
+
             messages = data.objects.get(user=request.user)
             return render(request, 'mainAuth.html', {'username': request.user, 'messages': messages})
 
@@ -126,5 +146,11 @@ def addservice(request):
 
 def addTelegram(request):
     return render(request, "addTelegram.html", {'username': request.user})
+
+
+def newaudio(filename):
+    fileneme = filename
+
+
 
 

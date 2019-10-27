@@ -24,3 +24,11 @@ class recognize:
             raise Exception("It's error with recognizing: {}".format(response.json()))
         else:
             return answer.text
+
+
+def recode (inputfile, outputfile):
+    bashCommand = "ffmpeg -i '" + inputfile + "' '" + outputfile + "'"
+    import subprocess
+    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()
+    return output, error
